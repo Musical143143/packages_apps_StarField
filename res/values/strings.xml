@@ -398,4 +398,7 @@
     <string name="always_on_pocket_mode_enabled_title">Always on Pocket mode</string>
     <string name="always_on_pocket_mode_summary">Always block screen and button inputs when screen is turned on</string>
     
+    <!-- Screenshot shutter sound  -->
+    <string name="screenshot_shutter_sound_title">Screenshot sound</string>
+    <string name="screenshot_shutter_sound_summary">Play sound when screenshot is taken</string>
 </resources>
