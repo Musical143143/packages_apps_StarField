@@ -55,6 +55,7 @@
     <string name="spoofing_category">Spoofing</string>
     <string name="icons_category">Icons</string>
     <string name="system_category">System</string>
+    <string name="bootanimation_category">Bootanimation</string>
 
     <!-- [CHAR_LIMIT=NONE] Developer Settings: Title of the setting which enables overlays to customize the adaptive icon shape (e.g. launcher and quick settings icons). -->
     <string name="theme_customization_icon_shape_title">Icon shape</string>
@@ -401,4 +402,9 @@
     <!-- Screenshot shutter sound  -->
     <string name="screenshot_shutter_sound_title">Screenshot sound</string>
     <string name="screenshot_shutter_sound_summary">Play sound when screenshot is taken</string>
+
+    <!-- Monet boot animation -->
+    <string name="monet_boot_animation_title">Dynamic color boot animation</string>
+    <string name="monet_boot_animation_summary">Use dynamic color themed boot animation that supports applying highlight colors from your wallpapers.</string>
+
 </resources>

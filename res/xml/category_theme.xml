@@ -44,4 +44,15 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+    android:title="@string/bootanimation_category">
+
+        <com.android.settings.custom.preference.SystemPropertySwitchPreference
+            android:key="persist.sys.boot.theme.monet"
+            android:title="@string/monet_boot_animation_title"
+            android:summary="@string/monet_boot_animation_summary"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+
+
 </PreferenceScreen>
