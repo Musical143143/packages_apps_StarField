@@ -29,7 +29,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 
 import com.android.internal.logging.nano.MetricsProto;
 
@@ -54,8 +54,50 @@ public class Spoof extends SettingsPreferenceFragment
         PreferenceScreen prefSet = getPreferenceScreen();
         final Resources res = getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        SwitchPreferenceCompat enableAdblock = (SwitchPreferenceCompat) findPreference("enable_adblock");
+        if (enableAdblock != null) {
+            AdSwitchHandler(enableAdblock);
+        }
     }
 
+    private void AdSwitchHandler(SwitchPreferenceCompat enableAdblock) {
+        String dnsSpecifier = Settings.Global.getString(
+            getContext().getContentResolver(),
+            Settings.Global.PRIVATE_DNS_SPECIFIER
+        );
+
+        boolean enableAdblockValue = "dns.adguard.com".equals(dnsSpecifier);
+        enableAdblock.setChecked(enableAdblockValue);
+
+        enableAdblock.setOnPreferenceChangeListener((preference, newValue) -> {
+            boolean isChecked = (Boolean) newValue;
+            dnsHandler(isChecked);
+            return true;
+        });
+    }
+
+    private void dnsHandler(boolean isChecked) {
+        if (isChecked) {
+            Settings.Global.putString(
+                getContext().getContentResolver(),
+                Settings.Global.PRIVATE_DNS_MODE,
+                "hostname"
+            );
+            Settings.Global.putString(
+                getContext().getContentResolver(),
+                Settings.Global.PRIVATE_DNS_SPECIFIER,
+                "dns.adguard.com"
+            );
+        } else {
+            Settings.Global.putString(
+                getContext().getContentResolver(),
+                Settings.Global.PRIVATE_DNS_MODE,
+                "off"
+            );
+        }
+    }
+    
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         return false;

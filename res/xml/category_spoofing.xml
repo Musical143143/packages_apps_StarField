@@ -19,6 +19,11 @@
         android:key="spoofing_system_wide_category"
         android:title="@string/spoofing_system_wide_category">
 
+        <SwitchPreferenceCompat
+            android:key="enable_adblock"
+            android:title="@string/enable_adblock_title"
+            android:summary="@string/enable_adblock_summary"/>
+
         <!-- Prebuilt PIF -->
         <com.android.settings.custom.preference.SystemPropertySwitchPreference
             android:key="persist.sys.pihooks.enable"
