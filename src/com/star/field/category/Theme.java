@@ -38,20 +38,46 @@ import com.android.settingslib.search.SearchIndexable;
 
 import com.android.internal.logging.nano.MetricsProto;
 
+import com.settings.utils.SystemUtils;
+
+import com.android.settings.custom.preference.GlobalSettingListPreference;
+import com.pixel.settings.utils.SystemUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @SearchIndexable
 public class Theme extends SettingsPreferenceFragment {
+    Preference.OnPreferenceChangeListener {
+
+    private GlobalSettingListPreference mLockSound;
+    private GlobalSettingListPreference mUnlockSound;
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.category_theme);
         PreferenceScreen prefSet = getPreferenceScreen();
         final Resources res = getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mLockSound = (GlobalSettingListPreference) findPreference(KEY_LOCK_SOUND);
+        mLockSound.setOnPreferenceChangeListener(this);
+        mUnlockSound = (GlobalSettingListPreference) findPreference(KEY_UNLOCK_SOUND);
+        mUnlockSound.setOnPreferenceChangeListener(this);
+
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        final Context context = getContext();
+        final ContentResolver resolver = context.getContentResolver();
+        if (preference == mLockSound || preference == mUnlockSound) {
+            SystemUtils.showSystemUiRestartDialog(context);
+            return true;
+        }
+        return false;
     }
 
     @Override

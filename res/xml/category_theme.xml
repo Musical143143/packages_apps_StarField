@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?> <!--
      Copyright (C) 2020 Project-Awaken
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -54,5 +53,23 @@
             android:defaultValue="false"/>
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="themes_audio_category"
+        android:title="@string/themes_audio_category">
+        <!-- Lock sound -->
+        <com.android.settings.custom.preference.GlobalSettingListPreference
+            android:key="lock_sound"
+            android:title="@string/themes_lock_sound_title"
+            android:entries="@array/themes_lock_unlock_sounds_entries"
+            android:entryValues="@array/themes_lock_sounds_values"
+            android:defaultValue="/product/media/audio/ui/Lock.ogg" />
+        <!-- Unlock sound -->
+        <com.android.settings.custom.preference.GlobalSettingListPreference
+            android:key="unlock_sound"
+            android:title="@string/themes_unlock_sound_title"
+            android:entries="@array/themes_lock_unlock_sounds_entries"
+            android:entryValues="@array/themes_unlock_sounds_values"
+            android:defaultValue="/product/media/audio/ui/Unlock.ogg" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
