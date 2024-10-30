@@ -415,4 +415,15 @@
     <string name="qs_transparency_title">Background transparency</string>
     <string name="qs_transparency_summary">Set transparency level for QS background</string>
 
+    <!-- Unlock/Lock Sound -->
+    <string name="themes_audio_category">Audio</string>
+    <string name="themes_lock_sound_title">Lock sound</string>
+    <string name="themes_unlock_sound_title">Unlock sound</string>
+
+    <!-- SystemUI restart dialog -->
+    <string name="systemui_restart_title">SystemUI restart required</string>
+    <string name="systemui_restart_message">For changes to take effect, a SystemUI restart is required. Restart SystemUI now?</string>
+    <string name="systemui_restart_yes">Yes</string>
+    <string name="systemui_restart_not_now">Not now</string>
+
 </resources>
